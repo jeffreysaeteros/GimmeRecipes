@@ -86,8 +86,8 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # export MONGO_URI="${{ secrets.MONGO_URI }}"
-            # export SPOON_SECRET="${{ secrets.SPOON_SECRET }}"
+            export MONGO_URI="${{ secrets.MONGO_URI }}"
+            export SPOON_SECRET="${{ secrets.SPOON_SECRET }}"
             cd /root/var/www/gimmerecipes1/
             docker-compose pull
             docker-compose down --remove-orphans
