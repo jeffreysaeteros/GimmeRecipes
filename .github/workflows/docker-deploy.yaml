@@ -88,7 +88,7 @@ jobs:
           script: |
             export MONGO_URI="${{ secrets.MONGO_URI }}"
             export SPOON_SECRET="${{ secrets.SPOON_SECRET }}"
-            export SPOON_SECRET="${{secrets.FLASK_SECRET_KEY}}"
+            export FLASK_SECRET_KEY="${{secrets.FLASK_SECRET_KEY}}"
             cd /root/var/www/gimmerecipes1/
             docker-compose pull
             docker-compose down --remove-orphans
