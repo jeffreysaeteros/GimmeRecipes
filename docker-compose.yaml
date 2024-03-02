@@ -9,8 +9,8 @@ services:
     depends_on:
       - mongo
     environment:
-      - FLASK_SECRET_KEY=${{secrets.FLASK_SECRET_KEY}}
-      - SPOON_SECRET={{ secrets.SPOON_SECRET }}
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
+      - SPOON_SECRET=${SPOON_SECRET}
       - URI=mongodb://mongo:27017
       - DATABASE=accounts
       - COLLECTION=users
@@ -25,8 +25,8 @@ services:
     environment:
       - DATABASE=accounts
       - COLLECTION=users
-      - FLASK_SECRET_KEY=${{secrets.FLASK_SECRET_KEY}}
-      - SPOON_SECRET={{ secrets.SPOON_SECRET }}
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
+      - SPOON_SECRET=${SPOON_SECRET}
 
 volumes:
   mongodb-data:
