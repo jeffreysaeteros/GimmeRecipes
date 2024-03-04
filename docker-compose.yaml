@@ -1,14 +1,17 @@
 version: "3.8"
 
 services:
-  web:
+  web_app:
     build:
       context: ./web_app
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
+    depends_on:
+      - mongo
     environment:
-      - NAME=World
-    volumes:
-      - .:/app
-    command: python app.py
+      - FLASK_SECRET_KEY=emergencyBlimp
+      - SPOON_SECRET=4d55eb98d4b2449aa93a8398508a7af0
+      - URI=mongodb://mongo:27017
+      - DATABASE=accounts
+      - COLLECTION=users
