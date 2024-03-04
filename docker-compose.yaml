@@ -7,9 +7,24 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
+    depends_on:
+      - mongo
     environment:
       - FLASK_SECRET_KEY=emergencyBlimp
       - SPOON_SECRET=4d55eb98d4b2449aa93a8398508a7af0
       - URI=mongodb://mongo:27017
       - DATABASE=accounts
       - COLLECTION=users
+
+  mongo:
+    build: ./mongodb
+    container_name: mongodb
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      - DATABASE=accounts
+      - COLLECTION=users
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
+      - SPOON_SECRET=${SPOON_SECRET}
