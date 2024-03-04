@@ -73,9 +73,12 @@ jobs:
           host: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
+            docker-compose -f /root/var/www/gimmerecipes1/docker-compose.yaml down || true
+            docker stop $(docker ps -aq) || true
+            docker rm $(docker ps -aq) || true
             docker-compose -f /root/var/www/gimmerecipes1/docker-compose.yaml down --remove-orphans
             docker system prune -af --volumes
+
       
       - name: Deploy to Digital Ocean
         uses: appleboy/ssh-action@master
