@@ -28,3 +28,5 @@ services:
       - COLLECTION=users
       - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
       - SPOON_SECRET=${SPOON_SECRET}
+volumes:
+  mongodb-data:
