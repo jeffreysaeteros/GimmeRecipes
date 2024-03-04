@@ -1,32 +1,12 @@
-version: "3"
+version: "3.8"
+
 services:
-  web_app:
-    build:
-      context: ./web_app
-      dockerfile: Dockerfile
+  web:
+    build: .
     ports:
       - "5000:5000"
-    depends_on:
-      - mongo
     environment:
-      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
-      - SPOON_SECRET=${SPOON_SECRET}
-      - URI=mongodb://mongo:27017
-      - DATABASE=accounts
-      - COLLECTION=users
-
-  mongo:
-    build: ./mongodb
-    container_name: mongodb
+      - NAME=World
     volumes:
-      - mongodb-data:/data/db
-    ports:
-      - "27017:27017"
-    environment:
-      - DATABASE=accounts
-      - COLLECTION=users
-      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
-      - SPOON_SECRET=${SPOON_SECRET}
-
-volumes:
-  mongodb-data:
+      - .:/app
+    command: python app.js
