@@ -2,11 +2,13 @@ version: "3.8"
 
 services:
   web:
-    build: .
+    build:
+      context: ./web_app
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     environment:
       - NAME=World
     volumes:
       - .:/app
-    command: python app.js
+    command: python app.py
