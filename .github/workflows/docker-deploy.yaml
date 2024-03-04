@@ -79,7 +79,7 @@ jobs:
             export FLASK_SECRET_KEY="${{secrets.FLASK_SECRET_KEY}}"
             cd /root/var/www/gimmerecipes1/
             docker pull js11692/gimme_recipes:latest
-            docker stop flask-app || true
-            docker rm flask-app || true
+            docker stop gimme_recipes || true
+            docker rm gimme_recipes || true
             docker run -d --name gimme_recipes -p 80:5000 js11692/gimme_recipes:latest
 
