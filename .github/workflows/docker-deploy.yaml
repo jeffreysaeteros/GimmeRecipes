@@ -73,6 +73,7 @@ jobs:
           host: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
             docker-compose -f /root/var/www/gimmerecipes1/docker-compose.yaml down || true
             docker stop $(docker ps -aq) || true
             docker rm $(docker ps -aq) || true
