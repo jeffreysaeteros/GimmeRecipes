@@ -94,7 +94,5 @@ jobs:
             cd /root/var/www/gimmerecipes1/
             docker-compose pull
             docker-compose down --remove-orphans
-            docker container prune -f
-            docker image prune -f
-            docker volume prune -f
+            docker system prune -af --volumes
             docker-compose up -d
