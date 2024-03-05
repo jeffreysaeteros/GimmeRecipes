@@ -10,9 +10,9 @@ services:
     depends_on:
       - mongo
     environment:
-      - FLASK_SECRET_KEY=emergencyBlimp
-      - SPOON_SECRET=4d55eb98d4b2449aa93a8398508a7af0
-      - URI=mongodb://mongo:27017
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
+      - SPOON_SECRET=${SPOON_SECRET}
+      - URI=${MONGO_URI}
       - DATABASE=accounts
       - COLLECTION=users
 
